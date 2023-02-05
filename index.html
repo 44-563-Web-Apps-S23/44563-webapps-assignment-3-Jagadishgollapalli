@@ -74,6 +74,29 @@
         <td>120 days</td>
       </tr>
     </table>
+    <hr/>
+    <h1>Jquery Code to validate Age</h1>
+    <p>It turns out, that this type of form is a fairly easy one to validate, because all you need to do is 
+      prove whether it's true or false that someone is older than the desired age cut off for access to your site. 
+      The jQuery snippet you can use to validate this type of form is as follows:</p>
+      <a href="https://stackoverflow.com/questions/18956956/validate-date-for-anyone-over-18-with-jquery"></a>
+    <pre>
+      $("#age-form").submit(function(){
+      var day = $("#day").val();
+      var month = $("#month").val();
+      var year = $("#year").val();
+      var age = 18;
+      var mydate = new Date();
+      mydate.setFullYear(year, month-1, day);
     
+      var currdate = new Date();
+      currdate.setFullYear(currdate.getFullYear() - age);
+      if ((currdate - mydate) < 0){
+        alert("Sorry, only persons over the age of " + age + " may enter this site");
+        return false;
+      }
+      return true;
+    });
+  </pre>
   </body>
 </html>
